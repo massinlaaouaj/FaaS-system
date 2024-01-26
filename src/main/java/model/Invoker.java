@@ -22,8 +22,10 @@ public class Invoker {
         this.totalMemoryAvailable = totalMemory;
     }
 
-    public void executeFunction(Function function) throws Exception {
+    public void executeFunction(Function function, int memoryNeeded) throws Exception {
+        this.totalMemoryAvailable -= memoryNeeded;
         function.run();
+        this.totalMemoryAvailable += memoryNeeded;
     }
 
     public int getTotalMemoryAvailable() {

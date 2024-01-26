@@ -6,6 +6,7 @@ import function.Function;
 import java.util.List;
 
 public class Controller {
+
     private Algorithm algorithm;
     private List<Invoker> invokers;
 
@@ -18,8 +19,24 @@ public class Controller {
         }
     }
 
-    public void assignFunctionToInvoker(Function function) throws Exception {
+    public void assignFunctionToInvoker(Function function, int memoryNeeded) throws Exception {
         Invoker selectedInvoker = this.algorithm.selectInvoker(this.invokers);
-        selectedInvoker.executeFunction(function);
+        selectedInvoker.executeFunction(function, memoryNeeded);
+    }
+
+    public Algorithm getAlgorithm() {
+        return algorithm;
+    }
+
+    public void setAlgorithm(Algorithm algorithm) {
+        this.algorithm = algorithm;
+    }
+
+    public List<Invoker> getInvokers() {
+        return invokers;
+    }
+
+    public void setInvokers(List<Invoker> invokers) {
+        this.invokers = invokers;
     }
 }
